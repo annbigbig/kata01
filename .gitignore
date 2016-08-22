@@ -1,0 +1,29 @@
+# Intellij Idea project files
+.idea
+*.iml
+*.ipr
+*.iws
+
+# eclipse bin dir
+bin
+
+# gradle config
+.gradle
+
+# gradle wrapper dir
+gradle/wrapper
+
+# project binaries
+build
+out
+target
+
+# sonar
+sonar-project.properties
+
+#logs
+*.log
+*.log.gz
+
+# mac os x
+.DS_Store

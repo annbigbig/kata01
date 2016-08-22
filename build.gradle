@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'kata01'
+    version = '0.0.1'
+    bootRepackage.enabled = false
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+configurations {
+    compile.exclude group: 'org.jboss.netty'
+    testCompile.exclude group: 'org.jboss.netty'
+}
+
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-starter-aop")
+    compile("com.datastax.cassandra:cassandra-driver-core:${cassDriverVersion}")
+    compile("org.springframework.data:spring-data-cassandra")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("org.projectlombok:lombok")
+    
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit")
+    testCompile("org.assertj:assertj-core")
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
+
+
